@@ -1,8 +1,10 @@
+import { createFlagsProxy } from "@/hooks/ffcutils";
 import { atom } from "recoil";
+
 
 export const ffcFlagsState = atom({
   key: "ffcFlagsState",
-  default: {},
+  default: createFlagsProxy()
 });
 
 export const mockUserInfoState = atom({

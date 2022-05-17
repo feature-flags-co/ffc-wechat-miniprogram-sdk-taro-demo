@@ -7,14 +7,11 @@
  */
 
 import { useEffect } from "react";
-import ffcClient, { ICustomizedProperty } from "ffc-wechat-miniprogram-sdk";
+import ffcClient, { ICustomizedProperty, IFeatureFlag, IFeatureFlagChange } from "ffc-wechat-miniprogram-sdk";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { mockUserInfoState, ffcFlagsState } from "@/atoms";
+import { createFlagsProxy, flagsDefaultValues } from "./ffcutils";
 
-const booleanDict = {
-  true: true,
-  false: false,
-};
 
 const getCustomizedPropertiesByUserInfo = (
   userInfo: any
@@ -29,17 +26,9 @@ const getCustomizedPropertiesByUserInfo = (
         // @ts-ignore
         name: key,
         // @ts-ignore
-        value,
+        value: `${value}`,
       });
     }
-  }
-  return result;
-};
-
-const initFfcFlagsState = (): Object => {
-  let result = ffcClient.getAllFeatureFlags();
-  for (let [key, value] of Object.entries(result)) {
-    result[key] = booleanDict[value];
   }
   return result;
 };
@@ -55,24 +44,21 @@ export const useInitFFC = () => {
         userName: "visitor",
         id: "visitor",
       },
+      // 通过 bootstrap 参数传入默认值
+      bootstrap: Object.keys(flagsDefaultValues).map(k => ({
+        id: k,
+        variation: flagsDefaultValues[k]
+      })) as IFeatureFlag[]
     });
 
     if (!Object.keys(ffcFlags)?.length) {
-      setFfcFlags(initFfcFlagsState());
+      setFfcFlags(createFlagsProxy());
     }
 
-    ffcClient.on("ff_update", (changes) => {
-      // 监听并更新所有状态，并同步到recoil中
-      if (changes?.[0]) {
-        const { id, newValue } = changes[0];
-        if (ffcFlags[id] !== newValue) {
-          setFfcFlags((prev) => ({
-            ...prev,
-            [id]: booleanDict[newValue],
-          }));
-        }
-        // 此处将数据同步到后台，才能在面板中看到开关调用统计报告（已向开发方提需求）
-        ffcClient.variation(id, newValue);
+    ffcClient.on("ff_update", (changes: IFeatureFlagChange[]) => {
+      if (changes.length) {
+        const flags = createFlagsProxy();
+        setFfcFlags(() => flags);
       }
     });
   }, []);
