@@ -57,8 +57,7 @@ export const useInitFFC = () => {
 
     ffcClient.on("ff_update", (changes: IFeatureFlagChange[]) => {
       if (changes.length) {
-        const flags = createFlagsProxy();
-        setFfcFlags(() => flags);
+        setFfcFlags(createFlagsProxy());
       }
     });
   }, []);
