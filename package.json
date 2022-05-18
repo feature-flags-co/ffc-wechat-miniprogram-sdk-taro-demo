@@ -41,7 +41,7 @@
     "@tarojs/react": "3.4.9",
     "@tarojs/runtime": "3.4.9",
     "@tarojs/taro": "3.4.9",
-    "ffc-wechat-miniprogram-sdk": "^0.0.8",
+    "ffc-wechat-miniprogram-sdk": "^0.0.10",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "recoil": "0.7.3-alpha.2"
