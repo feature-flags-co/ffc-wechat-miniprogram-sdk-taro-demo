@@ -39,7 +39,8 @@ export const useInitFFC = () => {
   useEffect(() => {
     ffcClient.init({
       secret:
-        "OTUyLTMxOGYtNCUyMDIyMDUwOTAyMjEzNl9fMTUyX18xNzZfXzM2OF9fZGVmYXVsdF80MDA2YQ==",
+        "NjIwLTZkOWEtNCUyMDIyMDUyNDAxNTcxNF9fMTUyX18xNzZfXzM3OV9fZGVmYXVsdF8xYTJjNg==",
+      //api: 'https://api-dev.featureflag.co',
       user: {
         userName: "visitor",
         id: "visitor",

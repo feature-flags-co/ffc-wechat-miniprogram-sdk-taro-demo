@@ -7,21 +7,27 @@ export const flagsDefaultValues = {
 }
 
 export const createFlagsProxy = () => {
+    // let flags = ffcClient.getAllFeatureFlags();
+    // flags = Object.keys(flags).reduce((acc, cur) => {
+    //   acc[cur] = flags[cur] === 'true';
+    //   return acc;
+    // }, {});
+    // return flags;
   return new Proxy({}, {
     get(target: Object, prop: string, receiver: Object) {
-      console.log(prop);
-        const variation = ffcClient.variation(prop, flagsDefaultValues[prop] || '');
+      if (prop.startsWith('$') || prop.startsWith('@') || prop === 'then' ) { return '';}
+      const variation = ffcClient.variation(prop, flagsDefaultValues[prop] || '');
 
-        // 如果你们所有返回值都是 true or false 的话可以使用下边四行代码
-        if (variation.toLowerCase() === 'false') {
-          return false;
-        }
+      // 如果你们所有返回值都是 true or false 的话可以使用下边四行代码
+      if (variation.toLowerCase() === 'false') {
+        return false;
+      }
 
-        if (variation.toLowerCase() === 'true') {
-          return true;
-        }
+      if (variation.toLowerCase() === 'true') {
+        return true;
+      }
 
-        return variation;
+      return variation;
     }
   })
 }
