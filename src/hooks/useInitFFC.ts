@@ -7,6 +7,7 @@
  */
 
 import { useEffect } from "react";
+//import ffcClient, { ICustomizedProperty, IFeatureFlag, IFeatureFlagChange } from "../ffc-wechat-miniprogram-sdk";
 import ffcClient, { ICustomizedProperty, IFeatureFlag, IFeatureFlagChange } from "ffc-wechat-miniprogram-sdk";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { mockUserInfoState, ffcFlagsState } from "@/atoms";
@@ -39,8 +40,8 @@ export const useInitFFC = () => {
   useEffect(() => {
     ffcClient.init({
       secret:
-        "NjIwLTZkOWEtNCUyMDIyMDUyNDAxNTcxNF9fMTUyX18xNzZfXzM3OV9fZGVmYXVsdF8xYTJjNg==",
-      //api: 'https://api-dev.featureflag.co',
+        "MzI1LTk5YjYtNCUyMDIxMDkyMTIyMjkwN19fNV9fNl9fMTJfX2RlZmF1bHRfZjA2ZmI=",
+      api: 'https://api-dev.featureflag.co',
       user: {
         userName: "visitor",
         id: "visitor",

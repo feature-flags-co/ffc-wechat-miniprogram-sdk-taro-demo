@@ -1,3 +1,4 @@
+//import ffcClient from "../ffc-wechat-miniprogram-sdk";
 import ffcClient from "ffc-wechat-miniprogram-sdk";
 
 export const flagsDefaultValues = {

@@ -1,0 +1,6 @@
+1. go to ffc-wechat-miniprogram-sdk and run : npm run cp
+2. in the current project, modify 
+  src/hooks/useInitFfc.ts
+  src/pages/index/index.tsx
+  src/hooks/ffcutils.ts
+  to use local sdk files

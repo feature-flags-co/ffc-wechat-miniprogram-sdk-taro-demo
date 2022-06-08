@@ -3930,10 +3930,10 @@
   dependencies:
     "pend" "~1.2.0"
 
-"ffc-wechat-miniprogram-sdk@^0.0.10":
-  "integrity" "sha512-vrxK+wqVLJvnAMJ5ybL9Kc4rm2PmHGjKbroxoADFgb98363ebArhT4Wsd/Lo0/kQ9GMnAalRX/ukJLINAbh0UQ=="
-  "resolved" "https://registry.npmjs.org/ffc-wechat-miniprogram-sdk/-/ffc-wechat-miniprogram-sdk-0.0.10.tgz"
-  "version" "0.0.10"
+"ffc-wechat-miniprogram-sdk@0.0.14":
+  "integrity" "sha512-2GGTZS4KMRpb2gPX+XosoWrteX/K+Weo32m3a20bNQmt3S8hsUxzifebn95iMV3mUPE95IzMwdAr+qim7EB78w=="
+  "resolved" "https://registry.npmjs.org/ffc-wechat-miniprogram-sdk/-/ffc-wechat-miniprogram-sdk-0.0.14.tgz"
+  "version" "0.0.14"
 
 "figgy-pudding@^3.5.1":
   "resolved" "https://registry.npmjs.org/figgy-pudding/-/figgy-pudding-3.5.2.tgz"
